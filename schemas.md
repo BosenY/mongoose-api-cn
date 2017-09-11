@@ -60,7 +60,26 @@ let Blog = mongoose.model('Blog', blogSchema)
 
 ## 实例方法
 
-一个model\(模型\)的实例就是一个document\(文件\)，文件有许多内置方法，当然我们也可以自己去写一些自定义
+一个model\(模型\)的实例就是一个document\(文件\)，文件有许多内置方法，当然我们也可以自己去写一些自定义方法
+
+```js
+//定义一个schema
+let animalSchema = new mongoose.Schema({name: String, type: String})
+//为schema添加一个自定义方法
+animalSchema.methods.findSimlarTypes = (cb) => {
+    return this.model('Animal').find({type: this.type}, cb)
+}
+```
+
+现在我们所有定义的animalmode实例都可以使用这个自定义方法：
+
+```js
+let Animal = mongoose.model('Animal', animalSchema)
+let dog = new Animal({ type: 'dog' })
+dog.findSimilarTypes(function (err, dogs) {
+  console.log(dogs); // woof
+});
+```
 
 
 
