@@ -6,7 +6,7 @@
 * models
 * documents
 * [queries](queiries.md)
-* validation
+* [validation](validation.md)
 * middleware
 * population
 * connections
