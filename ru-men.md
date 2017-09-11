@@ -84,5 +84,19 @@ Kitten.find((err, kittens) => {
 })
 ```
 
+上面的操作是让我们把搜索到的所有的小猫全部在控制台打印出来，如果我们想要按照name来进行过滤，Mongoose也是支持的。
+
+```js
+Kitten.find({ name: /^Fluff/ }, callback)
+```
+
+这将执行搜索具有以“Fluff”开头的name属性的所有文档，并将结果返回给回调。
+
+
+
+# 祝贺
+
+这就是一个简单的创建了一个模model实例，然后在实例上添加自定义method的过程，下面来看主要的核心api。
+
 
 
