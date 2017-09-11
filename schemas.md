@@ -1,4 +1,6 @@
-# Schemas（架构）
+```
+Schemas（架构）
+```
 
 定义：
 
@@ -126,6 +128,10 @@ new Schema({..}, { autoIndex: false })
 virtuals是你可以用来获取和设置的文档属性，但是不能保存到MongoDB。getter可用于格式化或者组合字段，在把单个值设置为多个值的时候很有用处。
 
 
+
+```js
+
+```
 
 
 
