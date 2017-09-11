@@ -8,7 +8,7 @@
 * [queries](queiries.md)
 * [validation](validation.md)
 * [middleware](middleware.md)
-* population
+* [population](population.md)
 * connections
 * plugins
 
