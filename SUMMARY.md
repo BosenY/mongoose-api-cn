@@ -4,7 +4,7 @@
 * [入门](ru-men.md)
 * schemas
 * models
-* documents
+* [documents](documents.md)
 * [queries](queiries.md)
 * [validation](validation.md)
 * [middleware](middleware.md)
