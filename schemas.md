@@ -79,7 +79,7 @@ animalSchema.methods.findSimlarTypes = (cb) => {
 let Animal = mongoose.model('Animal', animalSchema)
 let dog = new Animal({ type: 'dog' })
 dog.findSimilarTypes( (err, dogs) => {
-  console.log(dogs); // woof
+  console.log(dogs); // dog
 });
 ```
 
