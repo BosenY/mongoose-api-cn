@@ -51,10 +51,12 @@ blogSchema.add（{
 
 ## 创建model\(模型\) {#create-model}
 
+schema只是定义了一种数据结构，具体的表名还有增删查改需要一个model来实现
+
 要使用我们的schemas来定义，需要我们自己去把blogSchema转化为一个我们可以使用的model，为此，我们使用mongoose.model\(modelName, schema\)来定义一个blogSchema的实例：
 
 ```js
-let Blog = mongoose.model('Blog', blogSchema)
+let Blog = mongoose.model('Blog', blogSchema) //Blog就是表名
 // ready to go!
 ```
 
@@ -76,7 +78,7 @@ animalSchema.methods.findSimlarTypes = (cb) => {
 ```js
 let Animal = mongoose.model('Animal', animalSchema)
 let dog = new Animal({ type: 'dog' })
-dog.findSimilarTypes(function (err, dogs) {
+dog.findSimilarTypes( (err, dogs) => {
   console.log(dogs); // woof
 });
 ```
