@@ -121,12 +121,71 @@ animalSchema.set('autoIndex', false)
 new Schema({..}, { autoIndex: false })
 ```
 
-## virtuals\(虚拟\)
+## virtuals\(虚拟属性\)
 
-virtuals是你可以用来获取和设置的文档属性，但是不能保存到MongoDB。getter可用于格式化或者组合字段，在把单个值设置为多个值的时候很有用处。
+virtuals是你可以用来获取和设置的文档属性，但是不能保存到MongoDB。可用于格式化或者组合字段，在把单个值设置为多个值的时候很有用处。
 
 ```js
+// define a schema
+let personSchema = new Schema({
+  name: {
+    first: String,
+    last: String
+  }
+})
 
+// compile our model
+let Person = mongoose.model('Person', personSchema)
+
+// create a document
+let bad = new Person({
+    name: { first: 'Walter', last: 'White' }
+})
+```
+
+假设我们想打印bad的全名。我们可以这样做:
+
+```js
+console.log(bad.name.first + ' ' + bad.name.last); // Walter White
+```
+
+或者我们可以在personschema定义[虚拟属性的getter](http://mongoosejs.com/docs/api.html#virtualtype_VirtualType-get)，这样我们不需要每次写出这个字符串的拼接：
+
+```js
+personSchema.virtual('name.full').get( () => {
+  return this.name.first + ' ' + this.name.last
+})
+
+```
+
+现在，我们进入我们的虚拟”的`"name.full"`资源的时候，我们将调用getter函数的返回值：
+
+```js
+console.log('%s is insane', bad.name.full) // Walter White is insane
+```
+
+注意，如果产生的记录转换为一个对象或JSON，virtuals不包括默认。通过`virtuals`：`true`是`toobject()`或`tojson()`他们返回值。
+
+这也是不错的，能够通过`this.name.full`设置`this.name.first`和`this.name.last`。例如，如果我们想respectively改变`bad`的`name.first`和`name.last`为`'Breaking'`和`'Bad'`，只需要：
+
+```js
+bad.name.full = 'Breaking Bad'
+```
+
+Mongoose让你这样做也是通过[虚拟属性的setter](http://mongoosejs.com/docs/api.html#virtualtype_VirtualType-set)
+
+```js
+personSchema.virtual('name.full').set( (name) => {
+  let split = name.split(' ')
+  this.name.first = split[0]
+  this.name.last = split[1]
+});
+
+...
+
+mad.name.full = 'Breaking Bad'
+console.log(mad.name.first) // Breaking
+console.log(mad.name.last)  // Bad
 ```
 
 
