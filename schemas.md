@@ -1,4 +1,4 @@
-Schemas（架构）
+# Schemas（架构）
 
 定义：
 
@@ -48,4 +48,10 @@ blogSchema.add（{
 ```
 
 这里我们给上面的博客的schema添加了评论总数和阅读总数两个key，具体的schema上面的add方法是如何实现的，请自己去看官方的文档上面的[add方法](http://www.nodeclass.com/api/mongoose.html#schema_Schema-add)。
+
+## 创建模型 {#create-model}
+
+
+
+
 
