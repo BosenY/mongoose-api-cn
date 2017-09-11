@@ -1,4 +1,4 @@
-入门
+# 入门
 
 首先确保你已经安装了[MongoDB](https://www.gitbook.com/book/boseny/mongoose-api-cn/edit#)和[Node.js](https://www.gitbook.com/book/boseny/mongoose-api-cn/edit#)接下来使用npm来安装Mongoose：
 
@@ -36,7 +36,13 @@ let kittySchema = mongoose.Schema({
 现在我们设置了一个属性name，它的类型是string，接下来我们要将我们的Schema编译成模型。
 
 ```js
-var Kitten = mongoose.model('Kitten', kittySchema)
+let Kitten = mongoose.model('Kitten', kittySchema)
+```
+
+模型就是一个我们用来构建文档的一个类，在这种情况下，每一个文档都将会是一个小猫，它的属性和行为会在我们的model当中被声明。我们去创建一个小猫的实例
+
+```js
+let jony = new Kitten()
 ```
 
 
