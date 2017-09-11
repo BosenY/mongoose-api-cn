@@ -53,5 +53,12 @@ blogSchema.add（{
 
 
 
+要使用我们的schemas来定义，需要我们自己去把blogSchema转化为一个我们可以使用的model，为此，我们使用mongoose.model\(modelName, schema\)来定义一个blogSchema的实例：
+
+```js
+let Blog = mongoose.model('Blog', blogSchema)
+// ready to go!
+```
+
 
 
