@@ -25,6 +25,19 @@ let blogSchema = new Schema({
 
 这里定义了一个博客的schema，它的数据结构如上面所示，有标题、作者、内容、评论、日期、隐藏以及标签等。
 
+每一个键都代表了一个属性，这些属性会被最终转化为相应的SchemaType。例如title会被转化为String SchemaType，而date会被转化为Date SchemaType，键值也可以像对象一个被嵌套，就像上面定义的meta属性。
+
+这里我们允许定义的SchemaType有：
+
+* String
+* Number
+* Date
+* Buffer
+* Boolean
+* Mixed
+* ObjectId
+* Array
+
 如果我们还想添加其他的key，那么可以去使用Schema的add方法。
 
 ```js
@@ -35,6 +48,4 @@ blogSchema.add（{
 ```
 
 这里我们给上面的博客的schema添加了评论总数和阅读总数两个key，具体的schema上面的add方法是如何实现的，请自己去看官方的文档上面的[add方法](http://www.nodeclass.com/api/mongoose.html#schema_Schema-add)。
-
-
 
