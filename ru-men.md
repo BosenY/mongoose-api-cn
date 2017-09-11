@@ -58,7 +58,22 @@ kittySchema.methods.speak = () => {
 }
 let Kitten = mongoose.model('Kitten', kittySchema)
 ```
+
 将speak方法添加到method属性上然后编译成model原型并且在每个文档上面去公开
+
+```js
+let axx = new Kitten({name: 'axx'})
+axx.speak() // 'Meow name is axx'
+```
+
+现在我们有了可以让小猫说话的功能，但是我们仍然没有保存任何东西到我们的MongoDB，每一个实例文档都可以去调用其save方法来讲这个实例保存到数据库，callback的第一个参数是error，如果有的话：
+
+```js
+axx.save((err, axx) => {
+    if(err) return console.error(err)
+    axx.speak()
+})
+```
 
 
 
