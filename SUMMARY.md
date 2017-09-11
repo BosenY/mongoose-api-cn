@@ -7,7 +7,7 @@
 * documents
 * [queries](queiries.md)
 * [validation](validation.md)
-* middleware
+* [middleware](middleware.md)
 * population
 * connections
 * plugins
