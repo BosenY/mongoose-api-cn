@@ -2,7 +2,7 @@
 
 * [Introduction](README.md)
 * [入门](ru-men.md)
-* schemas
+* [schemas](schemas.md)
 * [models](models.md)
 * [documents](documents.md)
 * [queries](queiries.md)
