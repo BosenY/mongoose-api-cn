@@ -9,6 +9,6 @@
 * [validation](validation.md)
 * [middleware](middleware.md)
 * [population](population.md)
-* connections
+* [connections](connections.md)
 * plugins
 
