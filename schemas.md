@@ -49,9 +49,7 @@ blogSchema.add（{
 
 这里我们给上面的博客的schema添加了评论总数和阅读总数两个key，具体的schema上面的add方法是如何实现的，请自己去看官方的文档上面的[add方法](http://www.nodeclass.com/api/mongoose.html#schema_Schema-add)。
 
-## 创建模型 {#create-model}
-
-
+## 创建model\(模型\) {#create-model}
 
 要使用我们的schemas来定义，需要我们自己去把blogSchema转化为一个我们可以使用的model，为此，我们使用mongoose.model\(modelName, schema\)来定义一个blogSchema的实例：
 
@@ -59,6 +57,10 @@ blogSchema.add（{
 let Blog = mongoose.model('Blog', blogSchema)
 // ready to go!
 ```
+
+## 实例方法
+
+一个model\(模型\)的实例就是一个document\(文件\)，文件有许多内置方法，当然我们也可以自己去写一些自定义
 
 
 
