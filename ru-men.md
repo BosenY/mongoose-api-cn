@@ -75,5 +75,14 @@ axx.save((err, axx) => {
 })
 ```
 
+现在，我们想看一下我们的所有保存的小猫，我们可以通过kitten这个model来查看：
+
+```js
+Kitten.find((err, kittens) => {
+  if (err) return console.error(err)
+  console.log(kittens)
+})
+```
+
 
 
