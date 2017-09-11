@@ -155,7 +155,6 @@ console.log(bad.name.first + ' ' + bad.name.last); // Walter White
 personSchema.virtual('name.full').get( () => {
   return this.name.first + ' ' + this.name.last
 })
-
 ```
 
 现在，我们进入我们的虚拟”的`"name.full"`资源的时候，我们将调用getter函数的返回值：
@@ -186,6 +185,70 @@ personSchema.virtual('name.full').set( (name) => {
 mad.name.full = 'Breaking Bad'
 console.log(mad.name.first) // Breaking
 console.log(mad.name.last)  // Bad
+```
+
+`[虚拟属性的setter`在其他验证之前使用。因此，上面的例子仍然可以工作，即使第一个和最后一个name字段是必需的。
+
+只有非虚拟属性工作作为查询的一部分和字段选择。
+
+## 选项（Options）
+
+Schemas有几个可配置的选项，可以直接传递给构造函数或设置：
+
+```js
+new Schema({..}, options);
+
+// or
+
+var schema = new Schema({..});
+schema.set(option, value);
+```
+
+有效的选项：
+
+* [autoIndex](http://mongoosejs.com/docs/guide.html#autoIndex)
+* [capped](http://mongoosejs.com/docs/guide.html#capped)
+* [collection](http://mongoosejs.com/docs/guide.html#collection)
+* [emitIndexErrors](http://mongoosejs.com/docs/guide.html#emitIndexErrors)
+* [id](http://mongoosejs.com/docs/guide.html#id)
+* [\_id](http://mongoosejs.com/docs/guide.html#_id)
+* [minimize](http://mongoosejs.com/docs/guide.html#minimize)
+* [read](http://mongoosejs.com/docs/guide.html#read)
+* [safe](http://mongoosejs.com/docs/guide.html#safe)
+* [shardKey](http://mongoosejs.com/docs/guide.html#shardKey)
+* [strict](http://mongoosejs.com/docs/guide.html#strict)
+* [toJSON](http://mongoosejs.com/docs/guide.html#toJSON)
+* [toObject](http://mongoosejs.com/docs/guide.html#toObject)
+* [typeKey](http://mongoosejs.com/docs/guide.html#typeKey)
+* [validateBeforeSave](http://mongoosejs.com/docs/guide.html#validateBeforeSave)
+* [versionKey](http://mongoosejs.com/docs/guide.html#versionKey)
+* [skipVersioning](http://mongoosejs.com/docs/guide.html#versionKey)
+* [timestamps](http://mongoosejs.com/docs/guide.html#versionKey)
+
+#### 选项: autoIndex {#选项-autoindex}
+
+在应用程序启动时，Mongoose在你的Schema为每一个索引声明发送一个`ensureIndex`命令。在Mongoose V3版本时，索引是默认在后台创建。如果你想禁用自动创建和手动创建索引时，将你的Schemas自动索引（autoIndex）选项设置为`false`和在你的模型使用`ensureindexes`方法。
+
+```js
+var schema = new Schema({..}, { autoIndex: false });
+var Clock = mongoose.model('Clock', schema);
+Clock.ensureIndexes(callback);
+```
+
+#### 选项: bufferCommands {#选项-buffercommands}
+
+默认情况下，mongoose缓冲命令一直存在直到驱动设法重新连接。禁用缓冲，设置`buffercommands`为`false`。
+
+```js
+var schema = new Schema({..}, { bufferCommands: false });
+```
+
+#### 选项: capped {#选项-capped}
+
+Mongoose支持 MongoDBs[capped](http://www.mongodb.org/display/DOCS/Capped+Collections)集合。指定的MongoDB集合被封顶、设置封顶（capped）选项为文档的最大[字节](http://www.mongodb.org/display/DOCS/Capped+Collections#CappedCollections-size.)数。
+
+```js
+new Schema({..}, { capped: 1024 });
 ```
 
 
