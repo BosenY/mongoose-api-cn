@@ -96,7 +96,7 @@ animalSchema.statics.findByName = (name, cb) => {
 }
 let Animal = mongoose.model('Animal', animalSchema);
 Animal.findByName('fido', (err, animals) => {
-  console.log(animals);
+  console.log(animals); //'fido'
 });
 ```
 
