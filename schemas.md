@@ -100,5 +100,26 @@ Animal.findByName('fido', (err, animals) => {
 });
 ```
 
+## Index\(索引\)
+
+MongoDB是支持二级索引的，使用了mongoose，我们可以在schema中定义索引的层级，创建复合索引时，我们必须去定义索引的层级。
+
+```js
+let animalSchema = new Schema({
+  name: String,
+  type: String,
+  tags: { type: [String], index: true } // field level
+});
+animalSchema.index({ name: 1, type: -1 }); // schema level
+```
+
+在应用启动的时候，Mongoose会自动去调用ensureIndex模式中的每个索引。虽然这样在开发过程当中很好，但是在生产环境中建议禁用这种行为，因为创建索引可能会导致性能的重大影响。 可以通过设置autoIndex模式的选项来禁用改行为：
+
+```js
+animalSchema.set('autoIndex', false)
+// or
+new Schema({..}, { autoIndex: false })
+```
+
 
 
