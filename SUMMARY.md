@@ -10,5 +10,5 @@
 * [middleware](middleware.md)
 * [population](population.md)
 * [connections](connections.md)
-* plugins
+* [plugins](plugins.md)
 
