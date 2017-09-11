@@ -83,5 +83,22 @@ dog.findSimilarTypes( (err, dogs) => {
 });
 ```
 
+最好不要去覆盖默认方法，否则会发生不可预知的错误。
+
+## static\(静态\)
+
+为模型添加静态方法也是很简单的：
+
+```js
+// assign a function to the "statics" object of our animalSchema
+animalSchema.statics.findByName = (name, cb) => {
+  this.find({ name: new RegExp(name, 'i') }, cb);
+}
+let Animal = mongoose.model('Animal', animalSchema);
+Animal.findByName('fido', (err, animals) => {
+  console.log(animals);
+});
+```
+
 
 
