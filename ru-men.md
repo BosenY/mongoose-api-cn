@@ -42,8 +42,23 @@ let Kitten = mongoose.model('Kitten', kittySchema)
 模型就是一个我们用来构建文档的一个类，在这种情况下，每一个文档都将会是一个小猫，它的属性和行为会在我们的model当中被声明。我们去创建一个小猫的实例
 
 ```js
-let jony = new Kitten()
+let jony = new Kitten({name: 'jony'})
+console.log(jony.name) //'jony'
 ```
+
+我们还可以给小猫加上说话的功能：
+
+```js
+// NOTE: methods must be added to the schema before compiling it with mongoose.model()
+kittySchema.methods.speak = () => {
+  let greeting = this.name
+    ? "Meow name is " + this.name
+    : "I don't have a name"
+  console.log(greeting);
+}
+let Kitten = mongoose.model('Kitten', kittySchema)
+```
+将speak方法添加到method属性上然后编译成model原型并且在每个文档上面去公开
 
 
 
