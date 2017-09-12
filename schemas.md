@@ -251,5 +251,5 @@ Mongoose支持 MongoDBs[capped](http://www.mongodb.org/display/DOCS/Capped+Colle
 new Schema({..}, { capped: 1024 });
 ```
 
-
+其他具体的请翻阅[文档](http://mongoosejs.com/docs/guide.html)。
 
