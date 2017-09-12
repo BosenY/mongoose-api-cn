@@ -82,3 +82,9 @@ Tank.remove({ size: 'large' }, function (err) {
 
 API文档包含了许多额外的方法，像[count](http://mongoosejs.com/docs/api.html#model_Model.count)，[mapReduce](http://mongoosejs.com/docs/api.html#model_Model.mapReduce)，[aggregate](http://mongoosejs.com/docs/api.html#model_Model.aggregate)，[更多](http://mongoosejs.com/docs/api.html#model_Model.findOneAndRemove)。
 
+## 接下来
+
+现在我们已经介绍了模型，下面我们来看看文档
+
+
+
