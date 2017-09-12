@@ -13,14 +13,38 @@ var Tank = mongoose.model('Tank', schema);
 
 通俗的说就是这里命名的Tank模型，到了MongoDB当中就变成了tanks，因为是以复数的形式存储的。
 
-
-
 ## 构建文档
 
 文档是我们模型的实例。创建它们并保存到数据库很简单。
 
 ```js
+var Tank = mongoose.model('Tank', yourSchema);
 
+var small = new Tank({ size: 'small' });
+small.save(function (err) {
+  if (err) return handleError(err);
+  // saved!
+})
+
+// or
+
+Tank.create({ size: 'small' }, function (err, small) {
+  if (err) return handleError(err);
+  // saved!
+})
+```
+
+请注意，没有`tanks`将创建/删除，直到连接您的模型使用是打开的。每一个模型都有一个关联的连接。当你使用`mongoose.model()`。你的模型将要使用默认mongoose连接。
+
+```js
+mongoose.connect('localhost', 'gettingstarted');
+```
+
+如果你创建一个自定义的连接，使用连接的model\(\)函数来代替。
+
+```js
+var connection = mongoose.createConnection('mongodb://localhost:27017/test');
+var Tank = connection.model('Tank', yourSchema);
 ```
 
 
