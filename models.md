@@ -78,8 +78,7 @@ Tank.remove({ size: 'large' }, function (err) {
 
 如果你想要更新一个文档数据库，并将结果返回给你的应用程序，使用[`findOneAndUpdate`](http://mongoosejs.com/docs/api.html#model_Model.findOneAndUpdate)代替。
 
-  
+### more更多的
 
-
-
+API文档包含了许多额外的方法，像[count](http://mongoosejs.com/docs/api.html#model_Model.count)，[mapReduce](http://mongoosejs.com/docs/api.html#model_Model.mapReduce)，[aggregate](http://mongoosejs.com/docs/api.html#model_Model.aggregate)，[更多](http://mongoosejs.com/docs/api.html#model_Model.findOneAndRemove)。
 
