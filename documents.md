@@ -13,13 +13,19 @@ Mongoose[文档](http://mongoosejs.com/docs/api.html#document-js)代表了文档
 ```js
 Tank.findById(id,  (err, tank) => {
   if (err) return handleError(err);
-  
+
   tank.size = 'large';
   tank.save( (err, updatedTank) => {
     if (err) return handleError(err);
     res.send(updatedTank);
   });
 });
+```
+
+这种方法包括首先检索文档从Mongo，然后发出更新命令（通过触发调用保存）。然而，如果我们不需要的文档在我们的应用程序中返回，只需要更新一个属性直接在数据库、`Model#update`对我们是正确的：
+
+```js
+Tank.update({ _id: id }, { $set: { size: 'large' }}, callback);
 ```
 
 
