@@ -84,7 +84,5 @@ API文档包含了许多额外的方法，像[count](http://mongoosejs.com/docs/
 
 ## 接下来
 
-现在我们已经介绍了模型，下面我们来看看文档
-
-
+现在我们已经介绍了模型，下面我们来看看[Documents](http://mongoosejs.com/docs/documents.html)
 
