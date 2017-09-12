@@ -59,3 +59,27 @@ Tank.find({ size: 'small' }).where('createdDate').gt(oneYearAgo).exec(callback);
 
 查看关于如何使用[查询](http://mongoosejs.com/docs/api.html#query-js)API的详细信息的[querying](http://mongoosejs.com/docs/queries.html)章节。
 
+### Removing\(删除\)
+
+模型有一个静态的remove方法用来删除匹配的所有文档。
+
+```js
+Tank.remove({ size: 'large' }, function (err) {
+  if (err) return handleError(err);
+  // removed!
+});
+```
+
+### Updating（更新）
+
+每个模型都有它自己的uodate方法来修改自己数据库当中的文档，而不返回到您的应用程序。有关更多详细信息，请参考[API](http://mongoosejs.com/docs/api.html#model_Model.update)
+
+文档。
+
+如果你想要更新一个文档数据库，并将结果返回给你的应用程序，使用[`findOneAndUpdate`](http://mongoosejs.com/docs/api.html#model_Model.findOneAndUpdate)代替。
+
+  
+
+
+
+
