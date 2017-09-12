@@ -1,2 +1,4 @@
-# mongoose-api-cn
-mongoose非官方中文api
+# mongoose-doc-cn
+
+mongoose非官方中文文档
+
