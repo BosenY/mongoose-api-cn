@@ -47,5 +47,15 @@ var connection = mongoose.createConnection('mongodb://localhost:27017/test');
 var Tank = connection.model('Tank', yourSchema);
 ```
 
+### Querying（查询）
 
+Mongoose查找文档很容易，它支持MongoDB的[丰富的](http://www.mongodb.org/display/DOCS/Advanced+Queries)查询语法。文档可以在每个模型中各自使用[find](http://mongoosejs.com/docs/api.html#model_Model.find),[findById](http://mongoosejs.com/docs/api.html#model_Model.findById),[findOne](http://mongoosejs.com/docs/api.html#model_Model.findOne), 或者[where](http://mongoosejs.com/docs/api.html#model_Model.where)
+
+这些标准方法。
+
+```js
+Tank.find({ size: 'small' }).where('createdDate').gt(oneYearAgo).exec(callback);
+```
+
+查看关于如何使用[查询](http://mongoosejs.com/docs/api.html#query-js)API的详细信息的[querying](http://mongoosejs.com/docs/queries.html)章节。
 
