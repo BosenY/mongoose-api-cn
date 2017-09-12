@@ -28,5 +28,23 @@ Tank.findById(id,  (err, tank) => {
 Tank.update({ _id: id }, { $set: { size: 'large' }}, callback);
 ```
 
+如果我们的应用程序需要文档返回，则需要另一个方法，往往[更好](http://mongoosejs.com/docs/api.html#model_Model.findByIdAndUpdate):
+
+```js
+Tank.findByIdAndUpdate(id, { $set: { size: 'large' }}, function (err, tank) {
+  if (err) return handleError(err);
+  res.send(tank);
+});
+```
+
+`indAndUpdate/Remove`静态方法都在最多一个文档中进行更改，并返回它只有一个调用数据库。有几种不同的`findandmodify`主题。阅读[API文档](http://mongoosejs.com/docs/api.html)的更多细节。注意`findAndUpdate/Remove`不执行任何钩子或验证在在数据库中进行更改 之前。如果你需要钩子和验证,首先查询文档,然后保存它。
+
+> 译者注：[findByIdAndRemove](http://mongoosejs.com/docs/api.html#model_Model.findByIdAndRemove)，[findOneAndUpdate](http://mongoosejs.com/docs/api.html#model_Model.findOneAndUpdate)，[findAndModify](https://docs.mongodb.com/manual/reference/command/findAndModify/)
+
+### 验证 {#验证}
+
+在保存文档之前，文档进行了验证。详情阅读[API文档](http://mongoosejs.com/docs/api.html#document_Document-validate)或[validation](http://mongoosejs.com/docs/validation.html)章节。
+
+  
 
 
