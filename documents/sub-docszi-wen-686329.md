@@ -18,3 +18,16 @@ var parentSchema = new Schema({
 
 主要区别在于子文档不是单独保存，每当保存顶级父文档时，都会保存它们。
 
+```js
+var Parent = mongoose.model('Parent', parentSchema);
+var parent = new Parent({ children: [{ name: 'Matt' }, { name: 'Sarah' }] })
+parent.children[0].name = 'Matthew';
+
+// `parent.children[0].save()` is a no-op, it triggers middleware but
+// does **not** actually save the subdocument. You need to save the parent
+// doc.
+parent.save(callback);
+```
+
+
+
